@@ -1,0 +1,6 @@
+<h3>Name: <small><%= @contact.first_name %> <%= @contact.last_name%></small></h3>
+<h3>Email:<small> <%= @contact.email %></small></h3>
+<h3>Phone Number: <small><%= @contact.phone_number %></small></h3>
+<%= link_to("Delete this contact", "/contacts/#{@contact.id}", method: :delete) %><br>
+<%= link_to("Edit this contact", "/contacts/#{@contact.id}/edit") %><br>
+<%= link_to("Back to home", "/contacts") %>
