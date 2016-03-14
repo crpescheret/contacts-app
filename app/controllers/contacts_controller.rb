@@ -9,12 +9,12 @@ class ContactsController < ApplicationController
   end
 
   def create
-    Contact.create({first_name: params[:first_name],
-                    last_name: params[:last_name],
-                    email: params[:email],
-                    phone_number: params[:phone_number]
+    contact = Contact.create({first_name: params[:first_name],
+                              last_name: params[:last_name],
+                              email: params[:email],
+                              phone_number: params[:phone_number]
       })
-    render "create.html.erb"
+    redirect_to "/contacts/#{contact.id.to_i}"
   end
 
   def show
@@ -37,13 +37,13 @@ class ContactsController < ApplicationController
                     email: params[:email],
                     phone_number: params[:phone_number]
       })
-    render 'update.html.erb'
+    redirect_to "/contacts/#{contact.id}"
   end
 
   def destroy
     id = params[:id].to_i
     contact = Contact.find_by(id: id)
     contact.destroy
-    render 'destroy.html.erb'
+    redirect_to '/contacts'
   end
 end
